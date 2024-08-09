@@ -1,0 +1,40 @@
+/* PreviousMessages.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .message-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .message-item {
+    background-color: yellowgreen;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  @media (max-width: 600px) {
+    .message-item {
+      padding: 10px;
+      font-size: 1em;
+    }
+  }
+  

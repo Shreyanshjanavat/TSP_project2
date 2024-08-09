@@ -1,0 +1,81 @@
+/* Chatbox.css */
+
+.teacher-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+  }
+  
+  .teacher-info {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .teacher-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .teacher-info p {
+    margin: 5px 0 0 0;
+    color: #666;
+  }
+  
+  .message-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .message-container textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 600px) {
+    .teacher-page-container {
+      padding: 10px;
+    }
+  
+    .teacher-info h2 {
+      font-size: 1.2em;
+    }
+  
+    .message-container textarea {
+      height: 100px;
+      font-size: 0.9em;
+    }
+  
+    button {
+      padding: 8px 16px;
+      font-size: 0.9em;
+    }
+  }
+  

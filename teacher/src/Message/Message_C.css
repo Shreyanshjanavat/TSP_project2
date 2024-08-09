@@ -1,0 +1,54 @@
+/* Message_C.css */
+.message-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .message-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-container {
+    margin: 10px auto;
+    padding: 10px;
+  }
+}

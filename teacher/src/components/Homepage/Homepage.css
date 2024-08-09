@@ -1,0 +1,57 @@
+/* Homepage.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.message-box {
+  background-color: #fff8b3; /* Light yellow */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.fee-box {
+  background-color: #ffcccc; /* Light red */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.message-box p, .fee-box p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.message-box a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.message-box a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .message-box, .fee-box {
+    padding: 15px;
+  }
+
+  .message-box p, .fee-box p {
+    font-size: 1em;
+  }
+}

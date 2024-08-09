@@ -1,0 +1,50 @@
+.appa {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.appa-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.list-format-main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.listproduct-format {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.grid-container {
+  width: 100%;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.low-percentage {
+  background-color: red; /* Light red background for low percentages */
+}
+
+.low-percent1 {
+  background-color: green; /* Light red background for low percentages */
+}
+@media (max-width: 600px) {
+  .list-format-main, .listproduct-format {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .list-format-main p, .listproduct-format p {
+    margin: 5px 0;
+  }
+}
