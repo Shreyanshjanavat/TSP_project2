@@ -6,7 +6,7 @@ const Message = () => {
   const [selectedClass, setSelectedClass] = useState('');
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
-  const [selectedStudent, setSelectedStudent] = useState('');
+  const [selectedStudents, setSelectedStudents] = useState([]);
   const [selectedTeacher, setSelectedTeacher] = useState('');
   const [message, setMessage] = useState('');
 
@@ -41,8 +41,14 @@ const Message = () => {
     setSelectedClass(e.target.value);
   };
 
-  const handleStudentChange = (id) => {
-    setSelectedStudent(id);
+  const handleStudentCheckboxChange = (id) => {
+    setSelectedStudents((prevSelected) => {
+      if (prevSelected.includes(id)) {
+        return prevSelected.filter(studentId => studentId !== id);
+      } else {
+        return [...prevSelected, id];
+      }
+    });
   };
 
   const handleTeacherChange = (id) => {
@@ -95,11 +101,17 @@ const Message = () => {
               <h2>Students List:</h2>
               <ul>
                 {students.map((student) => (
-                  <li key={student.id} onClick={() => handleStudentChange(student.id)}>
-                    <strong>Name:</strong> {student.name}<br />
-                    <strong>Roll No:</strong> {student.RollNo}<br />
-                    <strong>Class:</strong> {student.classNumber}<br />
-                    <strong>Phone No:</strong> {student.Phoneno}
+                  <li key={student.id}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={selectedStudents.includes(student.id)}
+                        onChange={() => handleStudentCheckboxChange(student.id)}
+                      />
+                      <strong>Name:</strong> {student.name}<br />
+                      <strong>Roll No:</strong> {student.RollNo}<br />
+                      <strong>Class:</strong> {student.classNumber}<br />
+                    </label>
                   </li>
                 ))}
               </ul>
