@@ -6,17 +6,40 @@ const Message = () => {
   const [selectedClass, setSelectedClass] = useState('');
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
-  const [selectedStudents, setSelectedStudents] = useState([]);
+  const [selectedStudentIds, setSelectedStudentIds] = useState([]); // Initialize as an empty array
   const [selectedTeacher, setSelectedTeacher] = useState('');
   const [message, setMessage] = useState('');
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/adminmessage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Fix the typo here
+        },
+        body: JSON.stringify({ message, selectedStudentIds }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Data was not sent');
+      }
+
+      const data = await response.json();
+      alert('Message sent successfully!');
+      console.log(data);
+    } catch (error) {
+      console.error('Error sending data:', error);
+      alert('There was an error sending the message.');
+    }
+  };
 
   useEffect(() => {
     if (selection === 'student' && selectedClass) {
       // Fetch students based on the selected class
       fetch(`http://localhost:5000/classdata?classNumber=${selectedClass}`)
-        .then(response => response.json())
-        .then(data => setStudents(data))
-        .catch(error => console.error('Error fetching students:', error));
+        .then((response) => response.json())
+        .then((data) => setStudents(data))
+        .catch((error) => console.error('Error fetching students:', error));
     }
   }, [selection, selectedClass]);
 
@@ -24,9 +47,9 @@ const Message = () => {
     if (selection === 'teacher') {
       // Fetch list of teachers
       fetch('http://localhost:5000/alldatateacher')
-        .then(response => response.json())
-        .then(data => setTeachers(data))
-        .catch(error => console.error('Error fetching teachers:', error));
+        .then((response) => response.json())
+        .then((data) => setTeachers(data))
+        .catch((error) => console.error('Error fetching teachers:', error));
     }
   }, [selection]);
 
@@ -35,18 +58,21 @@ const Message = () => {
     setSelectedClass('');
     setStudents([]);
     setTeachers([]);
+    setSelectedStudentIds([]); // Clear selected students when changing selection
   };
 
   const handleClassChange = (e) => {
     setSelectedClass(e.target.value);
   };
 
-  const handleStudentCheckboxChange = (id) => {
-    setSelectedStudents((prevSelected) => {
-      if (prevSelected.includes(id)) {
-        return prevSelected.filter(studentId => studentId !== id);
+  const handleStudentCheckboxChange = (studentId) => {
+    setSelectedStudentIds((prevSelectedIds) => {
+      if (prevSelectedIds.includes(studentId)) {
+        // If already selected, remove it from the array
+        return prevSelectedIds.filter((id) => id !== studentId);
       } else {
-        return [...prevSelected, id];
+        // Otherwise, add it to the array
+        return [...prevSelectedIds, studentId];
       }
     });
   };
@@ -102,16 +128,17 @@ const Message = () => {
               <ul>
                 {students.map((student) => (
                   <li key={student.id}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedStudents.includes(student.id)}
-                        onChange={() => handleStudentCheckboxChange(student.id)}
-                      />
-                      <strong>Name:</strong> {student.name}<br />
-                      <strong>Roll No:</strong> {student.RollNo}<br />
-                      <strong>Class:</strong> {student.classNumber}<br />
-                    </label>
+                    <strong>Name:</strong> {student.name}
+                    <br />
+                    <strong>Roll No:</strong> {student.RollNo}
+                    <br />
+                    <strong>Class:</strong> {student.classNumber}
+                    <input
+                      type="checkbox"
+                      checked={selectedStudentIds.includes(student.id)}
+                      onChange={() => handleStudentCheckboxChange(student.id)}
+                    />{' '}
+                    Select
                   </li>
                 ))}
               </ul>
@@ -126,8 +153,10 @@ const Message = () => {
           <ul>
             {teachers.map((teacher) => (
               <li key={teacher.id} onClick={() => handleTeacherChange(teacher.id)}>
-                <strong>Name:</strong> {teacher.name}<br />
-                <strong>Subject:</strong> {teacher.subject}<br />
+                <strong>Name:</strong> {teacher.name}
+                <br />
+                <strong>Subject:</strong> {teacher.subject}
+                <br />
                 <strong>Phone No:</strong> {teacher.phone}
               </li>
             ))}
@@ -145,6 +174,8 @@ const Message = () => {
           placeholder="Enter your message here..."
         />
       </div>
+
+      <button onClick={handleSubmit}>Send Message</button>
     </div>
   );
 };

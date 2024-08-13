@@ -781,3 +781,44 @@ app.post('/teacherremoved',async(req,res)=>{
         name:req.body.name
     })
 })
+//APi and data schema for the Admin messsages
+const Admin_message=mongoose.model('Admin_messages',{
+  id:{
+    type:Number,
+    required:true,
+  },
+    Message:{
+    type:String,
+    required:true,
+  },
+    To:
+    {type:String,
+    required:true,}
+  
+})
+app.post('/adminmessage', async (req, res) => {
+  try {
+    // Get the last message to determine the next ID
+    const lastMessage = await Admin_message.findOne().sort({ id: -1 });
+    let id = 1;
+    if (lastMessage) {
+      id = lastMessage.id + 1;
+    }
+
+    // Create a new message document
+    const adminMessage = new Admin_message({
+      id: id,
+      Message: req.body.message,
+      To: req.body.selectedStudentIds,
+    });
+
+    // Save the message to the database
+    await adminMessage.save();
+
+    // Respond with the saved message
+    res.status(201).json(adminMessage);
+  } catch (error) {
+    console.error('Error saving message:', error);
+    res.status(500).json({ error: 'Failed to save message' });
+  }
+});
