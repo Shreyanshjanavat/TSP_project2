@@ -5,19 +5,24 @@ const NewsComponent = () => {
   const API_KEY = "1900c619ed0040f1a8c44cf8dade86db";
   const [news, setNews] = useState([]);
   const [category, setCategory] = useState('education');
-  const [query, setQuery] = useState('india');
+  const [query, setQuery] = useState('');
 
   const getData = async (category, query) => {
     const url = query 
       ? `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
-      : `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${API_KEY}`;
+      : " ";
     const response = await fetch(url);
     const jsondata = await response.json();
+    
     setNews(jsondata.articles);
   };
 
+  useEffect(() => {
+    getData(category, query);
+  }, [category, query]);
+
   const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
+    setQuery(newCategory);
     getData(newCategory, query);
   };
 
