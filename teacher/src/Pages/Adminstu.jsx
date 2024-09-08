@@ -11,6 +11,7 @@ import Chatbox from '../components/Chatbox/Chatbox';
 import AllReplies from '../components/Chatbox/AllReplies';
 import OTPForm from '../components/ForgetPassword/OTPForm';
 import Newpassword from '../components/ForgetPassword/Newpassword'
+import NewsComponent from '../components/Newscomponent/NewsComponent';
 
 const Adminstu = () => {
   return (
@@ -20,6 +21,8 @@ const Adminstu = () => {
         <Route path='/previousmessages' element={<PreviousMessages />} />
         <Route path='/forgetpassword' element={<OTPForm />} />
         <Route path='/newpassword' element={<Newpassword />} />
+        <Route path='/news' element={<NewsComponent />} />
+        
         
         <Route path='/receivedmessages/:id' element={< ReceivedMessage />} />
         <Route path='/allreplies/:id' element={< AllReplies />} />

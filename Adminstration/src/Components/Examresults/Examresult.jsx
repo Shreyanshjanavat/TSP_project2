@@ -81,6 +81,7 @@ function Examresult() {
       console.error('Error:', error);
       alert('An error occurred while submitting the form');
     }
+    
   };
 
   return (

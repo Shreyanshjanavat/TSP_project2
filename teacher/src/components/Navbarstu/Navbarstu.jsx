@@ -79,6 +79,10 @@ const NavbarStu = () => {
           {/* <img src={listproduct_icon} alt="List Icon" /> */}
           <p>Change Password</p>
         </Link>
+        <Link to='/news' className='sidebar-item1'>
+          {/* <img src={listproduct_icon} alt="List Icon" /> */}
+          <p>News</p>
+        </Link>
        
       </div>
     </div>

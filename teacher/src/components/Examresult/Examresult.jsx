@@ -22,6 +22,17 @@ const ExamResult = () => {
     fetchExamResults();
   }, []);
 
+  const printresult = () => {
+    let divcontent = document.getElementById('printableArea').innerHTML;
+    var a = window.open('', '', 'height=500, width=500');
+    a.document.write('<html>');
+    a.document.write('<body>');
+    a.document.write(divcontent);
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+  };
+
   const calculatePercentage = (subjects) => {
     const totalMarks = Object.values(subjects).reduce((total, marks) => total + marks, 0);
     const numberOfSubjects = Object.keys(subjects).length;
@@ -46,7 +57,7 @@ const ExamResult = () => {
   return (
     <div className="exam-result">
       <h1>Exam Results</h1>
-      <div className="marksheet">
+      <div className="marksheet" id="printableArea">
         <div className="student-info">
           <p><strong>Name:</strong> {examResults.name}</p>
           <p><strong>Roll No:</strong> {examResults.RollNo}</p>
@@ -72,7 +83,11 @@ const ExamResult = () => {
           <p><strong>Percentage:</strong> {percentage}%</p>
           <p><strong>Status:</strong> {status}</p>
         </div>
+        <div>
+         
+        </div>
       </div>
+      <button onClick={printresult}>Print</button>
     </div>
   );
 };

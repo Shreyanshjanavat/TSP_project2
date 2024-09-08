@@ -1,0 +1,132 @@
+/* Container */
+.news-container {
+    max-width: 100%;
+    padding: 15px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Search Form */
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  
+  .search-form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .search-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Category Buttons */
+  .category-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .category-buttons button {
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    max-width: 30%;
+    min-width: 100px;
+  }
+  
+  .category-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* News Cards */
+  .news-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .news-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .news-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .news-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .news-content {
+    padding: 15px;
+  }
+  
+  .news-content h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .news-content p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .news-content a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .news-content a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .news-content h2 {
+      font-size: 16px;
+    }
+  
+    .news-content p {
+      font-size: 13px;
+    }
+  
+    .news-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  

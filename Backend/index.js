@@ -15,6 +15,13 @@ app.use(express.json());
 app.use(cors());
 mongoose.connect("mongodb+srv://shreyanshjanavat:THjOpSxPaffFA47W@cluster0.hjjzae6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
+//For the news Api
+
+// const newsapi = new NewsAPI('1900c619ed0040f1a8c44cf8dade86db');
+
+// Query with 'sources'
+
+// Now you can use 'responseFromSource' and 'responseFromCountryAndCategory' as needed
 
 //uploaddation of images
 const storage=multer.diskStorage({
@@ -296,7 +303,7 @@ app.get('/t_data', async (req, res) => {
 });
 //conection of the database
 
-//Api creation
+//Api creationk
 app.listen(port,(error)=>{
     if(!error){
         console.log("Server is running on port" +port);
@@ -792,7 +799,7 @@ const Admin_message=mongoose.model('Admin_messages',{
     required:true,
   },
     To:
-    {type:String,
+    {type:Array,
     required:true,}
   
 })
