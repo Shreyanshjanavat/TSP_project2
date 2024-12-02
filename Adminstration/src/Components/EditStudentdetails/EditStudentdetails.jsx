@@ -59,19 +59,12 @@ const EditStudentdetails = () => {
 
   const handleDelete = async (studentId) => {
     try {
-     
-     
-      const isConfirmed = window.confirm('Are you sure you want to remove this student?');
-    if(isConfirmed){
-    await fetch('http://localhost:5000/removestudent',{
-      method:"POST",
-      headers:{
-       Accept:'application/json',
-       'Content-Type':'application/json',
-      },
-      body:JSON.stringify({id:studentId})
-    })
-  }
+      const response = await fetch(`http://localhost:5000/deletestudent?id=${studentId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
       if (response.ok) {
         setStudents((prevStudents) => prevStudents.filter((student) => student._id !== studentId));
@@ -182,7 +175,7 @@ const EditStudentdetails = () => {
             </div>
             <div className="button-group">
               <button className="save-button" onClick={() => handleSave(student._id)}>Save</button>
-              <button className="delete-button" onClick={() => handleDelete(student.id)}>Delete</button>
+              <button className="delete-button" onClick={() => handleDelete(student._id)}>Delete</button>
             </div>
           </div>
         ))
